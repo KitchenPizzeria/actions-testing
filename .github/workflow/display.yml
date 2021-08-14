@@ -3,7 +3,8 @@ name: first
 on: push
 
 jobs:
-	first job:
+	job1:
+    name: First Job
 		runs-on: macos-latest
 		steps:
 		- name: Step 1
@@ -11,7 +12,8 @@ jobs:
 		- name: Step 2
 			run: env | sort
 
-	second job:
+	job2:
+    name: Second Job
 		runs-on: ubuntu-latest
 		steps:
 		- name: Step 1
