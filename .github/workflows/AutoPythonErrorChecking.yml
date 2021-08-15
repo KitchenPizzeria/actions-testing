@@ -2,6 +2,8 @@ name: Python Syntax Checker
 
 on: push
 
+workflow_dispatch:
+
 jobs:
   SyntaxChecker:
     runs-on: ubuntu-latest
