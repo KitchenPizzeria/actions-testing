@@ -3,7 +3,7 @@ name: Python Syntax Checker
 on: push
 
 jobs:
-  Syntax Checker:
+  SyntaxChecker:
     runs-on: ubuntu-latest
     
     steps:
@@ -11,3 +11,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Python Syntax Checker
         uses: cclaus/Find-Python-syntax-errors-action@v0.2.0
+
+
