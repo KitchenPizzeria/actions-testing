@@ -1,0 +1,13 @@
+name: Python Syntax Checker
+
+on: push
+
+jobs:
+  Syntax Checker:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout current Repo
+        uses: actions/checkout@v2
+      - name: Python Syntax Checker
+        uses: cclaus/Find-Python-syntax-errors-action@v0.2.0
