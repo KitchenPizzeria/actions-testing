@@ -2,8 +2,6 @@ name: Artifact
 
 on: push
 
-workflow_dispatch:
-
 env:
   ARTIFACT_NAME = myartifact
 
