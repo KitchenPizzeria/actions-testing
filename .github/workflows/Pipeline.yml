@@ -1,0 +1,24 @@
+Name: Pipeline
+
+on: [Push]
+
+env:
+  APPLICATION_NAME:  app2
+
+jobs:
+  lint: # syntax checker
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Python Environment
+      uses: actions/seup-python-environment@v2
+    - name: Install Requirements
+      run: pip install --quiet --requirements requirements.txt
+    - name: Lint Code
+      run: |
+        flake 8 --ignore = E501, E231 *.py
+        pylint --disable = C0301 --disable = C0326 *.py
+    - name: Run Unit Test
+      run: |
+        python -m unittest --verbose --failfast
+
