@@ -1,0 +1,30 @@
+name: PR_Merger
+
+on:
+  pull:
+    types: [opened,reopened]
+
+jobs:
+  CheckFiles:
+    runs-on: ubuntu-latest
+    steps:
+    - name : Checkout the code
+      uses : actions/checkout@v2
+    - name : Python Set-up
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+
+    - name: Flake8 and PyLint
+      run: |
+        pip install -r requirements.txt
+        flake8 --ignore=E501,E231 *.py tests/*.py
+        pylint --errors-only --disable=C0326  *.py tests/*.py
+          
+  merge:
+    needs: [CheckFiles]
+    runs-on: ubuntu-latest
+    steps:
+    - name : Checkout the code
+      uses : actions/checkout@v2
+  
