@@ -5,7 +5,7 @@ on:
     types: [opened,reopened]
 
 jobs:
-  CheckFiles:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - name : Checkout the code
@@ -24,7 +24,7 @@ jobs:
         pylint --errors-only --disable=C0326  *.py tests/*.py
           
   merge:
-    needs: [CheckFiles]
+    needs: [lint]
     runs-on: ubuntu-latest
     steps:
     - name : Checkout the code
