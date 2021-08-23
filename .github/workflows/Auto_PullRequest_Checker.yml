@@ -38,10 +38,10 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         
     
-    - name: Merge Pull Request
-      uses: juliangruber/merge-pull-request-action@v1
+    - name: Merge command
+      uses: Goobles/gh-actions-merge-command@v1
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        number: 1
-        method: squash
+        allow_ff: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
