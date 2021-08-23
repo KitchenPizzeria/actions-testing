@@ -21,10 +21,10 @@ jobs:
     - name: Flake8 lint
       uses: py-actions/flake8@v1.1.0
       
-    - name: Merge command
-      uses: Goobles/gh-actions-merge-command@v1
-      with:
-        allow_ff: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Merge staging -> uat
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          target_branch: main
+          github_token: ${{ github.token }}
   
