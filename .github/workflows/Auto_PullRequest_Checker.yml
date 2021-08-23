@@ -1,7 +1,8 @@
 name: Merge Pull Request
 
 on:
-  workflow_displatch:
+  workflow_dispatch:
+
 
 on:
   pull_request:
