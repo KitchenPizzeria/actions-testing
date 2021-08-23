@@ -1,10 +1,13 @@
 name: Merge Pull Request
 
+om:
+  workflow_displatch:
+
 on:
-  pull_request:
-    branches:
-      - main
-    types: [opened,reopened]
+    pull_request:
+      branches:
+        - main
+      types: [opened,reopened]
     
 
 jobs:
@@ -28,15 +31,20 @@ jobs:
     needs: [lint]
     runs-on: ubuntu-latest
     steps:
+    
     - name : Checkout the code
       uses : actions/checkout@v2
       
-      
-    - uses: hmarr/auto-approve-action@v2.0.0
+    - name: Approve Action
+      uses: hmarr/auto-approve-action@v2.0.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        
     
-    - uses: managedkaos/merge-pull-request@v1.2
+    - name: Merge command
+      uses: Goobles/gh-actions-merge-command@v1
+      with:
+        allow_ff: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
