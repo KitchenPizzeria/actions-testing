@@ -9,8 +9,10 @@ jobs:
   
     runs-on: ubuntu-latest
     steps:
+    
     - name : Checkout the code
       uses : actions/checkout@v2
+      
     - name : Python Set-up
       uses: actions/setup-python@v1
       with:
@@ -18,23 +20,7 @@ jobs:
     
     - name: Flake8 lint
       uses: py-actions/flake8@v1.1.0
-    
-  
-          
-  merge:
-    needs: [lint]
-    runs-on: ubuntu-latest
-    steps:
-    
-    - name : Checkout the code
-      uses : actions/checkout@v2
       
-    - name: Approve Action
-      uses: hmarr/auto-approve-action@v2.0.0
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        
-    
     - name: Merge command
       uses: Goobles/gh-actions-merge-command@v1
       with:
