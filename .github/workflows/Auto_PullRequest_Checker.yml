@@ -1,6 +1,6 @@
 name: Merge Pull Request
 
-om:
+on:
   workflow_displatch:
 
 on:
