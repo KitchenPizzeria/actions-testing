@@ -1,0 +1,30 @@
+name: Merge Pull Request
+
+on:
+  workflow_dispatch:
+    
+
+jobs:
+  Merge PR to main:
+  
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name : Checkout the code
+      uses : actions/checkout@v2
+      
+    - name : Python Set-up
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+    
+    - name: Flake8 lint
+      uses: py-actions/flake8@v1.1.0
+      
+    - name: Merge staging -> uat
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          target_branch: main
+          github_token: ${{ github.token }}
+  
